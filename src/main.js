@@ -1,8 +1,51 @@
-import Vue from 'vue'
-import App from './App.vue'
-
-Vue.config.productionTip = false
-
+import Vue from "vue";
+import App from "./App.vue";
+import "@/mobile/flexible"; // 适配
+import "@/styles/reset.css"; // 初始化样式
+import router from "@/router"; // 路由对象
+import {
+  Button,
+  Form,
+  Field,
+  Uploader,
+  Tabbar,
+  TabbarItem,
+  NavBar,
+  Col,
+  Row,
+  Image as VanImage,
+  Cell,
+  CellGroup,
+  Icon,
+  Search,
+  List,
+  Toast,
+  Popup,
+  DatetimePicker,
+  Area,
+} from "vant";
+Vue.use(Toast);
+Vue.use(Area);
+Vue.use(DatetimePicker);
+Vue.use(Form);
+Vue.use(Popup);
+Vue.use(Search);
+Vue.use(Button);
+Vue.use(List);
+Vue.use(Field);
+Vue.use(NavBar);
+Vue.use(Tabbar);
+Vue.use(TabbarItem);
+Vue.use(Col);
+Vue.use(Row);
+Vue.use(VanImage);
+Vue.use(Cell);
+Vue.use(Icon);
+Vue.use(CellGroup);
+Vue.use(Uploader);
+Vue.config.productionTip = false;
+// vant组件库适配方案: pxtorem自动转换
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  router,
+  render: (h) => h(App),
+}).$mount("#app");
