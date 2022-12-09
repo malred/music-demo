@@ -4,7 +4,7 @@ export const login = (params) =>
   axios({
     method: "post",
     // url: "http://localhost:9090/user/login",
-    url："https://music-back-node.vercel.app/api/user/login",
+    url: "https://music-back-node.vercel.app/api/user/login",
     params,
   });
 // 注册
@@ -12,14 +12,14 @@ export const register = (params) =>
   axios({
     method: "post",
     // url: "http://localhost:9090/user/register",
-    url："https://music-back-node.vercel.app/api/user/register",
+    url: "https://music-back-node.vercel.app/api/user/register",
     params,
   });
 // 获取用户信息
 export const getMuserInfoByName = (uname) =>
   axios({
     // url: `http://localhost:9090/user/info?uname=${uname}`,
-    url："https://music-back-node.vercel.app/api/user/info?uname=${uname}",
+    url: "https://music-back-node.vercel.app/api/user/info?uname=${uname}",
     method: "GET",
   });
 // 根据账号查询账号密码
