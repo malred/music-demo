@@ -26,20 +26,25 @@ export default {
     };
   },
   methods: {
-    upt() {
+    upt() { 
       if (this.old === "" || this.old === undefined || this.old === null) {
         Toast.fail("请输入原密码");
         return;
       }
-      if (this.old !== this.muser.upass) {
+      if (this.old.toString() !== this.muser.upass) {
         Toast.fail("旧密码不正确");
         return;
       }
-      if (this.newp === "" || this.newp === undefined || this.newp === null) {
+      if (this.newp.split(" ").join("").length === 0) {
         Toast.fail("新密码不能为空");
+        return;
       }
       if (this.newp !== this.renewp) {
         Toast.fail("两次输入的密码不匹配");
+        return;
+      }
+      if (this.muser.upass === this.newp) {
+        Toast.fail("新旧密码不能相同");
         return;
       }
       uptPassApi({
@@ -69,6 +74,7 @@ export default {
       console.log(res.data.data);
       this.muser.uname = res.data.data.uname;
       this.muser.upass = res.data.data.upass;
+      console.log(this.muser);
     });
   },
 };

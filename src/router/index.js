@@ -11,6 +11,10 @@ import Login from "@/views/Setting/Login";
 import Register from "@/views/Setting/Register";
 import UptPass from "@/views/UptPass";
 import UptMsg from "@/views/Me/UptMsg";
+import MusicManage from "@/views/Me/MusicManage";
+import FriendManage from "@/views/Me/Friends";
+import FriendMsg from "@/views/Me/Friends/FriendMsg";
+import Space from "@/views/Me/Space";
 import { Notify } from "vant";
 Vue.use(VueRouter);
 const routes = [
@@ -82,6 +86,34 @@ const routes = [
           title: "修改信息",
         },
       },
+      {
+        path: "musicManage",
+        component: MusicManage,
+        meta: {
+          title: "音乐管理",
+        },
+      },
+      {
+        path: "friendManage",
+        component: FriendManage,
+        meta: {
+          title: "好友管理",
+        },
+      },
+      {
+        path: "friendMsg",
+        component: FriendMsg,
+        meta: {
+          title: "好友详情",
+        },
+      },
+      {
+        path: "space",
+        component: Space,
+        meta: {
+          title: "我的空间",
+        },
+      },
     ],
   },
   {
@@ -104,7 +136,7 @@ if (
 }
 setTimeout(() => {
   localStorage.removeItem("token");
-  location.reload()
+  location.reload();
 }, 3600000);
 router.beforeEach((to, from, next) => {
   let token = localStorage.getItem("token");

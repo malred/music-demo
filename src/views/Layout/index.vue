@@ -1,14 +1,14 @@
 <template lang="">
     <div> 
         <!-- 顶部导航 -->
-        <van-nav-bar :title="activeTit" fixed />
+        <van-nav-bar @click-left="onClickLeft" left-arrow left-text="返回" :title="activeTit" fixed />
         <!-- 显示当前路由对应的组件的内容 -->
         <router-view></router-view>
         <!-- 底部导航栏 -->
         <van-tabbar route>
           <van-tabbar-item replace to="/layout/home" icon="home-o">首页</van-tabbar-item>
           <van-tabbar-item replace to="/layout/search" icon="search">搜索</van-tabbar-item> 
-          <van-tabbar-item replace to="/layout/me" icon="friends-o">我的</van-tabbar-item> 
+          <van-tabbar-item replace to="/layout/me" icon="contact">我的</van-tabbar-item> 
           <van-tabbar-item replace to="/layout/setting" icon="setting-o">设置</van-tabbar-item> 
         </van-tabbar>
     </div>
@@ -24,6 +24,11 @@ export default {
     // 监听路由对象改变
     $route(){
       this.activeTit=this.$route.meta.title
+    }
+  },
+  methods:{
+    onClickLeft(){
+      this.$router.go(-1)
     }
   }
 };

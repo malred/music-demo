@@ -23,16 +23,33 @@ import {
   Popup,
   DatetimePicker,
   Area,
+  Dialog,
+  Overlay,
+  Collapse,
+  CollapseItem,
+  Radio,
+  RadioGroup,
+  Divider,
+  Tag,
+  Pagination,
 } from "vant";
+Vue.use(Tag);
+Vue.use(Radio);
+Vue.use(Pagination);
+Vue.use(RadioGroup);
 Vue.use(Toast);
+Vue.use(Divider);
 Vue.use(Area);
+Vue.use(Collapse);
 Vue.use(DatetimePicker);
+Vue.use(CollapseItem);
 Vue.use(Form);
 Vue.use(Popup);
 Vue.use(Search);
 Vue.use(Button);
 Vue.use(List);
 Vue.use(Field);
+Vue.use(Dialog);
 Vue.use(NavBar);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -43,6 +60,7 @@ Vue.use(Cell);
 Vue.use(Icon);
 Vue.use(CellGroup);
 Vue.use(Uploader);
+Vue.use(Overlay);
 Vue.config.productionTip = false;
 // vant组件库适配方案: pxtorem自动转换
 new Vue({

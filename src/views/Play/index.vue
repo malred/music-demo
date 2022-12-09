@@ -64,7 +64,7 @@
       ref="audio"
       preload="true"
       :src="`https://music.163.com/song/media/outer/url?id=${id}.mp3`"
-    ></audio>
+    ></audio> 
   </div>
 </template>
 

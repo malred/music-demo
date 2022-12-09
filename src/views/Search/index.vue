@@ -20,7 +20,7 @@
           <!-- 标题 -->
           <p class="hot_title">搜索结果</p> 
           <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-            <SongItem v-for="obj in resultArr" :key="obj.id"
+            <SongItem v-for="obj in resultArr" :key="obj.id" 
               :name="obj.name" :author="obj.ar[0].name" :id="obj.id"
             ></SongItem>
             <!-- <van-cell center :title="obj.name" 
@@ -53,7 +53,7 @@ export default {
     const res = await hotSearchAPI();
     this.hotArr = res.data.result.hots;
   },
-  methods: {
+  methods: { 
     async onLoad() {
       // 触底事件处理,会自动把loading改为true
       this.page++;
