@@ -51,9 +51,6 @@
   </template>
 <script>
 
-import { delFriendApi, getFriendsByFidApi } from "@/api";
-import { Dialog, Toast } from "vant";
-
 export default {
   data() {
     return {

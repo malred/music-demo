@@ -26,12 +26,14 @@ export default {
     };
   },
   methods: {
-    upt() { 
+    upt() {
       if (this.old === "" || this.old === undefined || this.old === null) {
         Toast.fail("请输入原密码");
         return;
       }
       if (this.old.toString() !== this.muser.upass) {
+        console.log(this.old.toString());
+        console.log(this.muser.upass);
         Toast.fail("旧密码不正确");
         return;
       }
