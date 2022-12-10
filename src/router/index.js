@@ -15,6 +15,8 @@ import MusicManage from "@/views/Me/MusicManage";
 import FriendManage from "@/views/Me/Friends";
 import FriendMsg from "@/views/Me/Friends/FriendMsg";
 import Space from "@/views/Me/Space";
+import PassBlog from "@/views/Me/Blog/PassBlog";
+import BlogDetail from "@/views/Me/Blog/BlogDetail";
 import { Notify } from "vant";
 Vue.use(VueRouter);
 const routes = [
@@ -112,6 +114,20 @@ const routes = [
         component: Space,
         meta: {
           title: "我的空间",
+        },
+      },
+      {
+        path: "blogDetail",
+        component: BlogDetail,
+        meta: {
+          title: "文章详情",
+        },
+      },
+      {
+        path: "passBlog",
+        component: PassBlog,
+        meta: {
+          title: "发布文章",
         },
       },
     ],

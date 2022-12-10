@@ -1,3 +1,4 @@
+// babel是用于转换语法的
 module.exports = {
   presets: [
     '@vue/cli-plugin-babel/preset'

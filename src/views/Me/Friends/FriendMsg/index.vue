@@ -47,28 +47,41 @@
                 </van-tag>
             </div> 
             <van-divider>{{fitem.name}}的文章</van-divider>
-            <van-pagination v-model="currentPage" :page-count="12" mode="simple" />
-            <van-divider>{{fitem.name}}的视频</van-divider> 
-            <van-pagination v-model="currentPage" :page-count="12" mode="simple" />
+            <!-- 轮播图展示文章封面,点击进入文章详情 -->
+            <van-swipe class="my-swipe" :autoplay="3000" indicator-color="black">
+              <van-swipe-item v-for="(item,i) in bloglist">
+                <p style="line-height: 20px;margin-bottom: 10px;">{{item.title}}</p>
+                <van-image 
+                  width="100%"
+                  fit="cover"
+                  height="180"
+                  :src="item.cover"
+                  @click="toBlogDetail(item.id)"
+                />
+              </van-swipe-item> 
+            </van-swipe> 
       </div>
   </template>
 <script>
-import { delFriendApi, getFriendsByFidApi } from "@/api";
+import { delFriendApi, getBlogsApi, getFriendsByFidApi } from "@/api";
 import { Dialog, Toast } from "vant";
 
 export default {
   data() {
     return {
-      //好友信息
+      // 好友信息
       fitem: {},
+      // 好友的文章列表
+      bloglist: {},
     };
   },
   methods: {
+    // 删除好友
     delFriend() {
       Dialog.confirm({
         title: "移除",
         message: "是否从好友列表中移除该好友?",
-      }).then(() => { 
+      }).then(() => {
         delFriendApi({
           uid: JSON.parse(localStorage.getItem("userinfo")).id,
           fid: this.$route.query.fid,
@@ -84,13 +97,38 @@ export default {
         });
       });
     },
+    // 进入文章详情
+    toBlogDetail(bid) {
+      this.$router.push({
+        path: "blogDetail",
+        // 传递bid,通过bid获取文章详情
+        query: {
+          bid: bid,
+        },
+      });
+    },
   },
   created() {
+    // 从路由获取fid(http:xxx?fid=xx)
     let fid = this.$route.query.fid;
+    // 获取friend的个人信息info
     this.fitem = getFriendsByFidApi(fid).then((res) => {
       this.fitem = res.data.data;
-      console.log(this.fitem);  
-      if(this.fitem.age===null) this.fitem.age='???'
+      // console.log(this.fitem);
+      // 如果没有年龄信息
+      if (this.fitem.age === null) this.fitem.age = "???";
+      // 获取该好友的文章列表
+      getBlogsApi(this.fitem.id).then((res) => {
+        // console.log(res.data.msg);
+        if (res.data.msg !== undefined) {
+          Toast.fail(res.data.msg);
+        }
+        if (res.data.data !== null && res.data.data !== undefined) {
+          // Toast.success(res.data.data);
+          this.bloglist = res.data.data;
+        }
+        // console.log(this.bloglist);
+      });
     });
   },
   //计算属性,依赖于其他属性得出
@@ -106,7 +144,7 @@ export default {
     ageTagType() {
       if (this.fitem.sex === "男") return "success";
       if (this.fitem.sex === "女") return "primary";
-      if (this.fitem.sex === "无") return "warning";   
+      if (this.fitem.sex === "无") return "warning";
     },
     //根据月日计算星座
     star() {
@@ -128,7 +166,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .fm {
   padding-top: 40px;
   padding-bottom: 50px;

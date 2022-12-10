@@ -22,12 +22,14 @@ export default {
   },
   watch: {
     // 监听路由对象改变
-    $route(){
+    $route() {
+      // 顶部导航栏的标题变成当前路由.meta.title
       this.activeTit=this.$route.meta.title
     }
   },
   methods:{
-    onClickLeft(){
+    onClickLeft() {
+      // 点击返回按钮时,返回上一个网页
       this.$router.go(-1)
     }
   }

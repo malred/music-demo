@@ -3,12 +3,12 @@
     <div class="bg"></div>
     <div class="msg">
       <!-- 头像 -->
-      <van-image 
+      <van-image
         round
         width="2.5rem"
         height="2.5rem"
         fit="cover"
-        :src="this.userinfo.img"  
+        :src="this.userinfo.img"
       />
       <input
         type="file"
@@ -43,7 +43,7 @@
         <img class="like" src="../../assets/发起.png" />
         <span class="txt">好友管理</span>
         <img class="to1" src="../../assets/展开.png" />
-      </div> 
+      </div>
       <div class="bottom" @click="uptMsg">
         <img class="like" src="../../assets/留言.png" />
         <span class="txt">修改信息</span>
@@ -66,21 +66,21 @@ export default {
     };
   },
   methods: {
-    toSpace(){
+    toSpace() {
       this.$router.push({
         path: "/layout/space",
       });
     },
-    friendManage(){
+    friendManage() {
       this.$router.push({
         path: "/layout/friendManage",
       });
     },
-    musicManage(){
+    musicManage() {
       this.$router.push({
         path: "/layout/musicManage",
       });
-    },  
+    },
     uptMsg() {
       this.$router.push({
         path: "/layout/uptMsg",
@@ -88,33 +88,29 @@ export default {
     },
     // 点击头像上传图片,更新头像
     uptImg(event) {
+      // 得到input的文件
       this.file = event.target.files[0];
       // 确认是否修改
       Dialog.confirm({
         title: "确认更新头像?",
         message: "可要想好了哦~",
-      })
-        .then(() => {
-          // on confirm
-          // 更新头像
-          uptImgApi({
-            id: this.userinfo.id,
-            file: this.file,
-          }).then((res) => {
-            if (res.data.msg !== null) {
-              Toast.fail(res.data.msg);
-            }
-            if (res.data.data !== null && res.data.data !== undefined) {
-              Toast.success(res.data.data);
-            }
-          });
-          // 更新成功刷新页面才能看到变化
-          location.reload(); 
-        })
-        .catch(() => {
-          // on cancel
-          return; 
+      }).then(() => {
+        // on confirm
+        // 更新头像
+        uptImgApi({
+          id: this.userinfo.id,
+          file: this.file,
+        }).then((res) => {
+          if (res.data.msg !== null && res.data.msg !== undefined) {
+            Toast.fail(res.data.msg);
+          }
+          if (res.data.data !== null && res.data.data !== undefined) {
+            Toast.success(res.data.data);
+          }
         });
+        // 更新成功刷新页面才能看到变化
+        location.reload();
+      });
     },
   },
   created() {
@@ -129,7 +125,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .me {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -138,7 +134,7 @@ export default {
 .msg {
   margin-top: 15px;
   text-align: center;
-  position: relative; 
+  position: relative;
 }
 /* 网上抄的把input和img重合,实现图片点击上传 */
 .fileInput {
@@ -151,9 +147,8 @@ export default {
   display: block;
   width: 3.5rem;
   clear: both;
-  display: block;
   margin: auto;
-  background-color: red;
+  /* background-color: red; */
 }
 /* 网上抄的背景图片设置 */
 .bg {
@@ -179,7 +174,7 @@ export default {
 }
 .desc > p {
   margin-bottom: 10px;
-} 
+}
 .like {
   padding-left: 10px;
   width: 50px;

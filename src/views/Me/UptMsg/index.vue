@@ -104,9 +104,12 @@ export default {
     // this.userinfo = JSON.parse(localStorage.getItem("userinfo")); 
   },
   methods: { 
+    // 日期选择器选择后
     onBirthConfirm(time) {
+      // 获取年月日,然后拼接,赋值给userinfo
       this.userinfo.birth =
         time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate();
+      // 让选择器消失
       this.showBirthPicker = false;
     },
     // 地区选择器
@@ -120,8 +123,8 @@ export default {
     },
     // 提交表单
     onSubmit() {
-      console.log(this.userinfo);
-      console.log(this.radio);
+      // console.log(this.userinfo);
+      // console.log(this.radio);
       // 更新信息
       // 确认是否修改
       Dialog.confirm({

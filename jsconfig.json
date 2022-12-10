@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "moduleResolution": "node",
     "paths": {
+      // 配置@指向路径src
       "@/*": [
         "src/*"
       ]

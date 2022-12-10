@@ -17,7 +17,11 @@ import {
   getFriends,
   getFriendsByFid,
   delFriend,
-  uploadImg,
+  uptCover,
+  addBlog,
+  getBlogs,
+  getBlogByBid,
+  uptBlog
 } from "./MUser";
 export const recommendMusicAPI = recommendMusic;
 export const newMusicApi = newMusic;
@@ -41,4 +45,8 @@ export const addFriendApi = addFriend;
 export const getFriendsApi = getFriends;
 export const getFriendsByFidApi = getFriendsByFid;
 export const delFriendApi = delFriend;
-export const uploadImgApi = uploadImg;
+export const uptCoverApi = uptCover
+export const addBlogApi = addBlog
+export const getBlogsApi = getBlogs
+export const getBlogByBidApi = getBlogByBid
+export const uptBlogApi = uptBlog

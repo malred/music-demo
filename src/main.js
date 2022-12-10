@@ -2,7 +2,13 @@ import Vue from "vue";
 import App from "./App.vue";
 import "@/mobile/flexible"; // 适配
 import "@/styles/reset.css"; // 初始化样式
-import router from "@/router"; // 路由对象
+import router from "@/router"; // 路由对象  
+// 富文本组件
+import VueQuillEditor from 'vue-quill-editor'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+Vue.use(VueQuillEditor);
 import {
   Button,
   Form,
@@ -32,7 +38,11 @@ import {
   Divider,
   Tag,
   Pagination,
+  Swipe,
+  SwipeItem
 } from "vant";
+Vue.use(Swipe);
+Vue.use(SwipeItem);
 Vue.use(Tag);
 Vue.use(Radio);
 Vue.use(Pagination);
