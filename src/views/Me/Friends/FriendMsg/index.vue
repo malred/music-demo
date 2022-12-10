@@ -68,7 +68,7 @@ export default {
       Dialog.confirm({
         title: "移除",
         message: "是否从好友列表中移除该好友?",
-      }).then(() => {
+      }).then(() => { 
         delFriendApi({
           uid: JSON.parse(localStorage.getItem("userinfo")).id,
           fid: this.$route.query.fid,

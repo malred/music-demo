@@ -15,7 +15,7 @@
 import { Dialog, Toast } from "vant";
 import { addLikeApi, getMusicByIdApi } from "@/api";
 export default {
-  data() {
+  data() { 
     return {
       show: false,
     };
