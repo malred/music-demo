@@ -146,6 +146,8 @@ export default {
             Toast.success(res.data.data);
             // 发布成功返回空间
             this.$router.push({ path: "space" });
+            // 刷新页面
+            location.reload()
           }
         });
       });
@@ -174,8 +176,10 @@ export default {
           }
           if (res.data.data !== null && res.data.data !== undefined) {
             Toast.success(res.data.data);
-            // 发布成功返回空间
+            // 修改成功返回空间
             this.$router.push({ path: "space" });
+            // 刷新页面
+            location.reload()
           }
         });
       });

@@ -21,7 +21,8 @@ import {
   addBlog,
   getBlogs,
   getBlogByBid,
-  uptBlog
+  uptBlog,
+  delBlog
 } from "./MUser";
 export const recommendMusicAPI = recommendMusic;
 export const newMusicApi = newMusic;
@@ -50,3 +51,4 @@ export const addBlogApi = addBlog
 export const getBlogsApi = getBlogs
 export const getBlogByBidApi = getBlogByBid
 export const uptBlogApi = uptBlog
+export const delBlogApi = delBlog

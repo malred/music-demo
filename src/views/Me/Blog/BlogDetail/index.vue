@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="bd">
+    <div class="bd">  
       <van-image 
         width="100%"
         fit="cover"
@@ -7,11 +7,13 @@
         :src="bloginfo.cover" 
       />
       <!-- 修改文章按钮: 只有是当前用户的文章才显示 -->
-      <div style="position:absolute;right: 0;top:10;"
+      <div style="position:absolute;right: 0;top:0;margin-top: 50px;z-index: 1;"
           v-if="this.authorinfo.name===this.curname"
       >
           <van-button type="primary" size="mini" @click="uptBlog(bloginfo.id)">修改文章</van-button> 
-      </div> 
+          <br/>
+          <van-button type="danger" size="mini" @click="delBlog(bloginfo.id)">删除文章</van-button> 
+      </div>  
       <div class="title">
         <div style="border-bottom: 1px solid black;padding-bottom: 5px">
           {{bloginfo.title}}
@@ -35,8 +37,8 @@
     </div>
 </template>
 <script>
-import { getBlogByBidApi } from "@/api";
-import { Toast } from "vant";
+import { delBlogApi, getBlogByBidApi } from "@/api";
+import { Dialog, Toast } from "vant";
 export default {
   data() {
     return {
@@ -49,9 +51,34 @@ export default {
     };
   },
   methods: {
+    // 修改文章
     uptBlog(bid) {
       // 跳转修改
       this.$router.push({ path: "passBlog", query: { bid } });
+    },
+    // 删除文章
+    delBlog(bid) {
+      if (bid === "" || bid === undefined) {
+        return;
+      }
+      Dialog.confirm({
+        title: "确认删除?",
+        message: "可要想好了哦~",
+      }).then(() => {
+        delBlogApi({ bid }).then((res) => {
+          console.log(res);
+          if (res.data.msg !== undefined) {
+            Toast.fail(res.data.msg);
+          }
+          if (res.data.data !== null && res.data.data !== undefined) {
+            Toast.success(res.data.data);
+            // 删除成功返回空间
+            this.$router.push({ path: "space" });
+            // 刷新页面
+            location.reload();
+          }
+        });
+      });
     },
   },
   created() {
@@ -81,7 +108,7 @@ export default {
 <style scoped>
 .bd {
   position: relative;
-  padding-top: 50px;
+  padding-top: 60px;
   padding-bottom: 50px;
 }
 .title {
