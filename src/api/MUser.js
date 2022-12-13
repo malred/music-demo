@@ -15,22 +15,14 @@ export const login = (params) =>
     axios({
         method: "post",
         url: baseUrl + "/user/login",
-        data: params,
-        headers: {
-            // 传递表单
-            "Content-Type": "application/json",
-        },
+        data: params, 
     });
 /** 注册 */
 export const register = (params) =>
     axios({
         method: "post",
         url: baseUrl + "/user/register",
-        data: params,
-        headers: {
-            // 传递表单
-            "Content-Type": "application/json",
-        },
+        data: params, 
     });
 /** 获取用户信息 */
 export const getMuserInfoByName = (uname) =>
@@ -49,11 +41,7 @@ export const uptPass = (params) =>
     axios({
         method: "post",
         url: baseUrl + "/user/uptPass",
-        data: params,
-        headers: {
-            // 传递表单
-            "Content-Type": "application/json",
-        },
+        data: params, 
     });
 /** 上传头像 */
 export const uptImg = (params) =>
@@ -69,11 +57,7 @@ export const uptMsg = (params) =>
     axios({
         method: "post",
         url: baseUrl + "/user/uptMsg", // vercel远程serverless 
-        data: params,
-        headers: {
-            // 传递表单
-            "Content-Type": "application/json",
-        },
+        data: params, 
     });
 /** 添加喜欢音乐 */
 export const addLike = (params) =>
