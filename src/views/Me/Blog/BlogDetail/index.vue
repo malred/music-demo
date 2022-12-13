@@ -8,7 +8,7 @@
       />
       <!-- 修改文章按钮: 只有是当前用户的文章才显示 -->
       <div style="position:absolute;right: 0;top:0;margin-top: 50px;z-index: 1;"
-          v-if="this.authorinfo.name===this.curname"
+          v-if="this.authorinfo.id===this.curid"
       >
           <van-button type="primary" size="mini" @click="uptBlog(bloginfo.id)">修改文章</van-button> 
           <br/>
@@ -46,8 +46,8 @@ export default {
       bloginfo: {},
       // 作者信息
       authorinfo: {},
-      // 当前登录的用户的name,用于判断是不是当前用户的文章
-      curname: "",
+      // 当前登录的用户的id,用于判断是不是当前用户的文章
+      curid: "",
     };
   },
   methods: {
@@ -99,7 +99,7 @@ export default {
           day.getFullYear() + "." + (day.getMonth() + 1) + "." + day.getDate();
         this.bloginfo.createday = day;
         // 获取缓存中的用户名称(登录时自动获取并保存)
-        this.curname = localStorage.getItem("uname");
+        this.curid = JSON.parse(localStorage.getItem("userinfo")).id;
       }
     });
   },

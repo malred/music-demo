@@ -147,7 +147,7 @@ export default {
             // 发布成功返回空间
             this.$router.push({ path: "space" });
             // 刷新页面
-            location.reload()
+            location.reload();
           }
         });
       });
@@ -179,7 +179,7 @@ export default {
             // 修改成功返回空间
             this.$router.push({ path: "space" });
             // 刷新页面
-            location.reload()
+            location.reload();
           }
         });
       });
