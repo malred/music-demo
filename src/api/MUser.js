@@ -15,7 +15,7 @@ export const login = (params) =>
     axios({
         method: "post",
         url: baseUrl + "/user/login",
-        data: params, 
+        data: {uname: params.uname,upass:params.upass}
     });
 /** 注册 */
 export const register = (params) =>
